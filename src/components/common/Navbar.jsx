@@ -14,10 +14,11 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
-    { label: 'Blog', path: '/blog' },
+    { label: 'About', path: '/about' },
     { label: 'Shop', path: '/shop' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   return (

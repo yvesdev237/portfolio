@@ -30,92 +30,88 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-      {/* Enhanced background gradient */}
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      {/* Enhanced gradient background */}
       <div className="absolute inset-0 bg-linear-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 -z-10" />
       
-      {/* Enhanced animated background shapes */}
+      {/* Animated background shapes with better spacing */}
       <motion.div
-        className="absolute top-20 left-10 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15 dark:opacity-8"
-        animate={{ x: [0, 80, 0], y: [0, 80, 0] }}
-        transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse' }}
+        className="absolute top-32 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-12 dark:opacity-8"
+        animate={{ x: [0, 100, 0], y: [0, 100, 0] }}
+        transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse' }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15 dark:opacity-8"
-        animate={{ x: [0, -80, 0], y: [0, -80, 0] }}
-        transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse' }}
+        className="absolute bottom-32 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-12 dark:opacity-8"
+        animate={{ x: [0, -100, 0], y: [0, -100, 0] }}
+        transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse' }}
       />
       <motion.div
         className="absolute top-1/2 left-1/3 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:opacity-5"
-        animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
-        transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse' }}
+        animate={{ x: [0, -60, 0], y: [0, 60, 0] }}
+        transition={{ duration: 14, repeat: Infinity, repeatType: 'reverse' }}
       />
 
       {/* Main content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-5xl mx-auto py-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="mb-6"
+            className="mb-8"
           >
-            <span className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold mb-6">
-              Welcome to my portfolio ✨
+            <span className="inline-block px-5 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-bold tracking-wide mb-8">
+              👋 WELCOME TO MY PORTFOLIO
             </span>
           </motion.div>
 
           <motion.h1
             ref={textRef}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 dark:text-white mb-8 leading-tight tracking-tight"
           >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-purple-600 to-pink-600">Yves</span>
+            I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-purple-600 to-pink-600">Yves</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 leading-relaxed"
           >
             Junior Web Developer & Creative Developer
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed"
           >
-            I craft beautiful, responsive, and interactive web experiences using modern technologies like React, Tailwind CSS, GSAP, and JavaScript. Based in Cameroon, bringing ideas to life one line of code at a time.
+            Crafting beautiful, responsive, and interactive web experiences using modern technologies like React, Tailwind CSS, GSAP, and JavaScript. Based in Cameroon, bringing innovative ideas to life through code.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
           >
             <Button 
               size="lg" 
-              onClick={() => {
-                const el = document.getElementById('projects');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => window.location.href = '/services'}
+              className="px-10 py-5 text-lg"
             >
-              Explore My Work
+              Explore Services
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              onClick={() => {
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => window.location.href = '/contact'}
+              className="px-10 py-5 text-lg"
             >
               Let's Connect
             </Button>
@@ -123,30 +119,32 @@ const Hero = () => {
 
           {/* Social quick links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center gap-6"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex justify-center gap-8 mb-20"
           >
             {['GitHub', 'Twitter', 'LinkedIn'].map((social, i) => (
-              <a
+              <motion.a
                 key={i}
                 href="#"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-semibold text-lg"
               >
                 {social}
-              </a>
+              </motion.a>
             ))}
           </motion.div>
 
           {/* Scroll indicator */}
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 15, 0] }}
             transition={{ duration: 2.5, repeat: Infinity }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+            className="flex flex-col items-center gap-2"
           >
-            <div className="text-gray-400 dark:text-gray-600 text-sm mb-2">Scroll to explore</div>
-            <div className="text-3xl">↓</div>
+            <span className="text-gray-400 dark:text-gray-600 text-sm font-medium">Scroll to explore</span>
+            <span className="text-3xl">↓</span>
           </motion.div>
         </div>
       </div>
