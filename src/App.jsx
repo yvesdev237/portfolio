@@ -1,44 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './context/ThemeContext';
-import { CartProvider } from './context/CartContext';
-import Navbar from './components/common/Navbar';
-import Footer from './components/common/Footer';
+import React from 'react'
+import Navbar from './components/Navbar'
+import Hero from './pages/Hero'
+import { motion } from 'framer-motion'
+import { StatsCount } from './components/StatsCount'
+import About from './pages/About'
+import Skill from './pages/Skill'
+import Projects from './pages/Projects'
 
-// Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import Shop from './pages/Shop';
-import ProductDetail from './pages/ProductDetail';
-import Cart from './pages/Cart';
-import Contact from './pages/Contact';
-
-function App() {
+const App = () => {
   return (
-    <ThemeProvider>
-      <CartProvider>
-        <Router>
-          <Navbar />
-          <main className="min-h-screen">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/shop/:slug" element={<ProductDetail />} />
-              <Route path="/shop/cart" element={<Cart />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </main>
-          <Footer />
-        </Router>
-      </CartProvider>
-    </ThemeProvider>
-  );
+    <div className='flex flex-col min-h-screen w-full p-0 m-0'>
+      <Navbar />
+      <Hero />
+      <motion.section initial = {{opacity : 0 , x : 100}} whileInView={{opacity : 1 , x: 0}} transition={{duration: 1.1}} viewport={{once : true}} className=' w-full h-30 flex justify-center items-center space-x-3 bg-transparent backdrop-blur-2xl rounded-l-full ml-4 ring-gray-400 ring-2'>
+        <StatsCount label="y. experience" end={2} duration={20}/>
+        <StatsCount label="projects" end={1} duration={20}/>
+        <StatsCount label="clients satisfied" end={0} duration={20}/>
+      </motion.section>
+      <About/>
+      <Skill />
+      <Projects />
+    </div>
+  )
 }
 
-export default App;
+export default App
