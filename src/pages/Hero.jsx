@@ -9,11 +9,11 @@ const Hero = () => {
         <h4 className='text-2xl font-light capitalize mt-8'>junior software engineer</h4>
         <span className='text-xl text-gray-500 capitalize'>based in cameroon</span>
         <div className='w-full mt-10 flex flex-col space-y-5 items-center'>
-          <button className='w-[80%] p-3 px-7 text-lg rounded-2xl bg-violet-950 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-start items-center capitalize '>
+          <button className='w-[80%] p-3 px-7 text-lg rounded-2xl bg-violet-700 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-start items-center capitalize '>
             <FaFolderOpen className='size-5'/>
             <p className='font-light'>view my work</p>
           </button>
-        <button className='w-[80%] p-3 px-7 text-lg rounded-2xl bg-violet-950 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-start items-center capitalize '>
+        <button className='w-[80%] p-3 px-7 text-lg rounded-2xl bg-violet-700 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-start items-center capitalize '>
           <FaEnvelope className='size-5'/>
           <p className='font-light'>get in touch</p>
         </button>

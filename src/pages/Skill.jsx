@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { ProgressBar } from '../components/ProgressBar';
-import { FaArtstation, FaCss3, FaDatabase, FaFigma, FaGit, FaGithub, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa';
+import { FaCss3, FaDatabase, FaFigma, FaGit, FaGithub, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa';
 
 const Skill = () => {
     const skills = [
@@ -71,7 +71,7 @@ const Skill = () => {
         },
     ]
   return (
-    <section className='mt-20 flex flex-col justify-center space-y-3 p-2'>
+    <section className='mt-20 flex flex-col justify-center space-y-3 p-2' id='skill'>
         <motion.div initial = {{opacity:0 , y :50}} whileInView={{opacity: 1 , y : 0}} transition = {{duration: 0.8}} viewport={{once : true}} className=' flex flex-col justify-center space-y-3 p-2'>
             <h4 className='text-center uppercase font-medium text-sm'>tech stack</h4>
             <h1 className='text-center capitalize text-2xl'>Skills & technologies</h1>
