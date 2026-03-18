@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import React from "react";
+import toast from "react-hot-toast";
 import { FaFacebook, FaGithub, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
+  const send = (e) => {
+    e.preventDefault()
+    toast.success('not yet available')
+  }
   const social = [
     {
       name: "GitHub",
@@ -130,7 +135,7 @@ const Contact = () => {
             required
           />
         </div>
-        <button className='w-[80%] p-2 px-7 text-lg rounded-2xl bg-violet-800 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-center items-center capitalize font-semibold'>
+        <button onClick={send} className='w-[80%] p-2 px-7 text-lg rounded-2xl bg-violet-800 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-center items-center capitalize font-semibold'>
             <FaTelegramPlane className="size-5"/>
             send message
         </button>

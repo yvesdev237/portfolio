@@ -28,6 +28,7 @@ const About = () => {
   ];
   return (
     <motion.section
+    id="about"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -41,19 +42,18 @@ const About = () => {
           great software
         </span>
       </h1>
-      <div className="text-left text-md">
+      <div className="text-left text-md leading-relaxed space-y-6  flex flex-col ">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea fuga quos
-          qui saepe, optio, asperiores velit quae provident laboriosam omnis,
-          amet dolore molestiae eos distinctio? Voluptatibus pariatur magnam
-          eaque temporibus. Omnis, architecto obcaecati aspernatur dicta a
-          maiores eligendi vero exercitationem blanditiis suscipit aperiam fugit
-          sapiente optio est magni quos labore nam pariatur! Sapiente, sunt
-          incidunt? Nam sit officia commodi esse? Aliquid, nihil ullam quisquam
-          architecto sunt accusantium, iure perferendis reiciendis libero magnam
-          mollitia atque voluptatibus doloribus sed quia! Harum quisquam ut at
-          sit facere sapiente inventore ab doloribus libero corporis.
+          I'm a passionate frontend developer focused on building modern , responsive , and visually engaging web experiences.<br /> <br />I specialize in React and Tailiwind CSS , creating interfaces that are not only functional but also smooth , intuitive , and enjoyable to use . I pay close attention to details like animations , transitions , and user interaction because I believe great design is what makes a product truly stand out.
         </p>
+        <div className="flex flex-col items-start space-y-3 ring-neutral-500 ring-0 rounded-lg">
+          <h4 className="text-left text-gray-400">What I focus on :</h4>
+          <ul className="list-disc px-7 text-lg text-gray-300">
+            <li>Smooth user experience</li>
+            <li>Clean and maintainable code</li>
+            <li>Modern UI design trends</li>
+          </ul>
+        </div>
       </div>
       <div className="w-full flex flex-col justify-center space-y-3 items-start p-4 px-2">
         {infos.map((info, index) => (
