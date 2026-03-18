@@ -1,21 +1,21 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { ProjectCard } from "../components/ProjectCard";
-import logo from "../assets/profilepicture.png";
+import zh from "../assets/zh-logo.png";
 import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = [
     {
       title: "zilo home",
-      image: logo,
+      image: zh,
       description:
         "A real estate platform where people in Bamenda can easily find homes",
       to: "https://zilohome.vercel.app"
     },
   ];
   return (
-    <section className="mt-30 flex flex-col justify-center space-y-4 p-4" id="projects">
+    <section className="mt-30 flex flex-col justify-center space-y-4 p-4 scroll-mt-20" id="projects">
       <h4 className="text-left uppercase text-sm font-medium">my work</h4>
       <h1 className="text-left capitalize text-3xl">Featured projects</h1>
       <div className="text-left text-md">

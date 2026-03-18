@@ -33,7 +33,7 @@ const About = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="mt-30 flex flex-col justify-center space-y-4 p-4"
+      className="mt-30 flex flex-col justify-center space-y-4 p-4 scroll-mt-20"
     >
       <h4 className="text-left uppercase text-sm font-medium">about me</h4>
       <h1 className="text-left capitalize text-2xl">

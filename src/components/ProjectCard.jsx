@@ -13,9 +13,9 @@ export const ProjectCard = ({ description , title , image , link}) => {
                 {description}
             </p>
         </div>
-            <div className='absolute top-3 right-3 bg-white/50 rounded-full p-3 transform -rotate-45 cursor-pointer '>
+            <div className='absolute top-3 right-3 bg-gray-400 rounded-full p-3 transform -rotate-45 cursor-pointer '>
                 <a href={link} target="_blank" rel="noopener noreferrer">
-                    <FaArrowRight className='size-5 text-violet-950 '/>
+                    <FaArrowRight className='size-5 text-violet-950'/>
                 </a>
             </div>
     </div>

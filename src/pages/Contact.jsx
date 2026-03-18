@@ -6,7 +6,7 @@ import { FaFacebook, FaGithub, FaTelegramPlane, FaWhatsapp } from "react-icons/f
 const Contact = () => {
   const send = (e) => {
     e.preventDefault()
-    toast.success('not yet available')
+    toast.error('not yet available')
   }
   const social = [
     {
@@ -36,7 +36,7 @@ const Contact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9 }}
       viewport={{ once: true }}
-      className="mt-20 flex flex-col justify-center space-y-3 p-3"
+      className="mt-20 flex flex-col justify-center space-y-3 p-3 scroll-mt-20"
     >
       <h4 className="text-left uppercase text-sm font-medium">contact</h4>
       <h1 className="text-left capitalize text-3xl">let's work together</h1>
