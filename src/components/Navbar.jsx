@@ -42,14 +42,14 @@ const Navbar = () => {
         <img src={logo} alt="logo" className="h-15 w-15 rounded-full " />
         <span className="text-lg font-extrabold">Yves Dev 237</span>
       </div>
-      <div onClick={toggle}>
+      <motion.div initial = {{opacity : 0 , x : 50}} whileInView={{opacity : 1 , x : 0}} viewport={{once : true}} transition={{duration : 0.8}} onClick={toggle}>
         <FaBars
           className={`size-7 cursor-pointer absolute transition-all duration-300 ease-in-out ${open ? "opacity-0 rotate-90" : "opacity-100 rotate-0"}`}
         />
         <FaX
           className={`size-7 cursor-pointer transition-all duration-300 ease-in-out ${open ? "opacity-100 rotate-0" : "opacity-0 rotate-90"}`}
         />
-      </div>
+      </motion.div>
       {open && (
         <motion.div
           initial={{ opacity: 0.01, x: 120, y: 50 }}

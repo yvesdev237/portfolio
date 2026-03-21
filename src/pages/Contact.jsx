@@ -1,13 +1,56 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaFacebook, FaGithub, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
+import { TailSpin } from "react-loader-spinner";
 
 const Contact = () => {
-  const send = (e) => {
+  const [sender , setSender] = useState('')
+  const [email , setEmail] = useState('')
+  const [subject , setSubject] = useState('')
+  const [content , setContent] = useState('')
+  const [budget , setBudget] = useState("")
+  const [loading , setLoading] = useState(false)
+  const send = async(e) => {
     e.preventDefault()
-    toast.error('not yet available')
+    if (budget === 0) {
+      toast.error('Please choose your budget')
+      return
+    }
+    setLoading(true)
+    try {
+      const response = await fetch('https://formspree.io/f/xpqyezbe' , {
+        headers : {
+          "content-type" : "application/json"
+        }, 
+        method : "POST" ,
+        body : JSON.stringify({
+          sender ,
+          email ,
+          subject ,
+          content ,
+          budget
+        })
+      })
+
+      if (response.ok) {
+        toast.success("Thanks for your message , I'll get back to you soon")
+        setSender('')
+        setEmail('')
+        setSubject('')
+        setContent('')
+        setBudget('')
+      } else {
+        toast.error('Something went wrong')
+      }
+    } catch (err) {
+      toast.error('Unable to send !' , err)
+    }finally{
+      setLoading(false)
+    }
   }
+
+
   const social = [
     {
       name: "GitHub",
@@ -80,6 +123,8 @@ const Contact = () => {
             type="text"
             className="w-[95%] outline-none ring-1 text-black ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all "
             placeholder="Your name here....."
+            value={sender}
+            onChange={(e) => setSender(e.target.value)}
             required
           />
         </div>
@@ -94,6 +139,8 @@ const Contact = () => {
             type="email"
             className="w-[95%] outline-none ring-1 text-gray-900 ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all"
             placeholder = "What's your email ?"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -108,6 +155,8 @@ const Contact = () => {
             type="text"
             className="w-[95%] outline-none text-gray-900 ring-1 ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all"
             placeholder = "What's the project all about ?"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
           />
         </div>
         <div className="flex flex-col justify-center w-full space-y-1 items-start">
@@ -117,9 +166,11 @@ const Contact = () => {
           >
             budject
           </label>
-          <select className="w-[95%] outline-none text-gray-900 ring-1 ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all">
-            <option>under $100</option>
-            <option>$100 +</option>
+          <select value={budget} onChange={(e) => setBudget(e.target.value)} className="w-[95%] outline-none text-gray-900 ring-1 ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all">
+            <option>what's your budget ?</option>
+            <option value= "$100 ~ $300" >$100 ~ $300</option>
+            <option value= "$300 ~ $500" >$300 ~ $500</option>
+            <option value= "$500 +" >$500 +</option>
           </select>
         </div>
         <div className="flex flex-col justify-center w-full space-y-1 items-start">
@@ -132,12 +183,16 @@ const Contact = () => {
           <textarea
             className="w-[95%] outline-none ring-1 text-gray-900 ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all"
             placeholder = "Your Message..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             required
           />
         </div>
-        <button onClick={send} className='w-[80%] p-2 px-7 text-lg rounded-2xl bg-violet-800 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-center items-center capitalize font-semibold'>
-            <FaTelegramPlane className="size-5"/>
-            send message
+        <button onClick={send} disabled ={loading} className='w-[80%] p-2 px-7 text-lg rounded-2xl flex gap-3 justify-center items-center bg-violet-800 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white capitalize font-semibold'>
+            {loading ? <TailSpin height={20}/>:(
+              <div className="flex gap-3 justify-center items-center"><FaTelegramPlane className="size-5"/>
+            send message</div>
+            )}
         </button>
       </motion.form>
     </motion.section>

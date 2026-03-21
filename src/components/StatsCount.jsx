@@ -5,7 +5,7 @@ export const StatsCount = ({end , duration , label}) => {
 
     useEffect(() => {
         let start = 0;
-        const countSpeed = 20 ;
+        const countSpeed = 15 ;
         const step = end/(duration/countSpeed)
 
         const timer = setInterval(() => {

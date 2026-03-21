@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { ProgressBar } from '../components/ProgressBar';
-import { FaCss3, FaDatabase, FaFigma, FaGit, FaGithub, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa';
+import { FaCss3, FaDatabase, FaFigma, FaGit, FaGitAlt, FaGithub, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa6';
 
 const Skill = () => {
     const skills = [
@@ -63,7 +63,7 @@ const Skill = () => {
     const tools = [
         {
             name : "git",
-            icon : <FaGit className='size-5 text-red-400' />
+            icon : <FaGitAlt className='size-5 text-red-400' />
         },
         {
             name : "gitHub",
