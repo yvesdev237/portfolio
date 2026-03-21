@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Projects = () => {
   const projects = [
     {
-      title: "zilo home",
+      title: "zilo home(Project ongoing)",
       image: zh,
       description:
         "A real estate platform where people in Bamenda can easily find homes",

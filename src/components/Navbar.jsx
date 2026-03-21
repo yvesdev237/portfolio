@@ -10,12 +10,12 @@ const Navbar = () => {
       target: "#about",
     },
     {
-      label: "my project",
-      target: "#projects",
-    },
-    {
       label: "my skills",
       target: "#skill",
+    },
+    {
+      label: "my project",
+      target: "#projects",
     },
     {
       label: "contact",

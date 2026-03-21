@@ -19,13 +19,13 @@ const Skill = () => {
         },
         {
             title : "Javascript" ,
-            level : 67 ,
+            level : 50 ,
             icon : <FaJs className='size-5 text-yellow-300'/>,
             stack : "frontend", 
         },
         {
             title : "react.Js" ,
-            level : 80 ,
+            level : 55 ,
             icon : <FaReact className='text-blue-400 size-5'/>,
             stack : "frontend", 
         },
