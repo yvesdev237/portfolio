@@ -8,7 +8,8 @@ import Skill from './pages/Skill'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Footer from './pages/Footer'
-import { FaArrowUp } from 'react-icons/fa'
+import { FaArrowUp, FaUsersCog, FaUsersSlash } from 'react-icons/fa'
+import { FaArrowUpRightDots, FaFolderOpen, FaUsers} from 'react-icons/fa6'
 
 const App = () => {
   const [scroll , setScroll] = useState(0);
@@ -39,10 +40,10 @@ const App = () => {
     <div className='relative flex flex-col min-h-screen w-full p-0 m-0'>
       <Navbar />
       <Hero />
-      <motion.section initial = {{opacity : 0 , x : 100}} whileInView={{opacity : 1 , x: 0}} transition={{duration: 1.1}} viewport={{once : true}} className=' w-full h-30 flex justify-center items-center space-x-3 bg-transparent backdrop-blur-2xl rounded-l-full ml-4 ring-gray-400 ring-2'>
-        <StatsCount label="y. experience" end={5} duration={1500}/>
-        <StatsCount label="projects" end={2} duration={1500}/>
-        <StatsCount label="clients satisfied" end={10} duration={1500}/>
+      <motion.section initial = {{opacity : 0 , x : 100}} whileInView={{opacity : 1 , x: 0}} transition={{duration: 1.1}} viewport={{once : true}} className=' w-full h-25 flex justify-center items-center space-x-3 bg-transparent backdrop-blur-2xl rounded-l-full ml-4 ring-gray-400 ring-2'>
+        <StatsCount label="experience" end={1} duration={1500} icon={<FaArrowUpRightDots className='size-8'/>}/>
+        <StatsCount label="projects" end={1} duration={1500} icon={<FaFolderOpen className='size-8'/>}/>
+        <StatsCount label="clients satisfied" end={1} duration={1500} icon={<FaUsers className='size-8'/>}/>
       </motion.section>
       <About/>
       <Skill />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-export const StatsCount = ({end , duration , label}) => {
+export const StatsCount = ({end , duration , label , icon}) => {
     const [count , setCount] = useState(0)
 
     useEffect(() => {
@@ -24,7 +24,8 @@ export const StatsCount = ({end , duration , label}) => {
   return (
     <div className='flex flex-col justify-around items-center'>
         <span className='text-3xl font-bold font-serif text-gray-300'>{count > 2 ? (count  + "+") : (count)}</span>
-        <p className='capitalize font-medium text-lg text-gray-400'>{label}</p>
+        <p className='capitalize font-medium text-md text-gray-400'>{label}</p>
+        <p>{icon}</p>
     </div>
   )
 }

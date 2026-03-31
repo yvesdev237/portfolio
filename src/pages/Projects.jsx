@@ -11,7 +11,7 @@ const Projects = () => {
       image: zh,
       description:
         "A real estate platform where people in Bamenda can easily find homes",
-      to: "https://zilohome.vercel.app"
+      to: "https://zilohome.vercel.app",
     },
   ];
   return (

@@ -17,6 +17,14 @@ const Contact = () => {
       toast.error('Please choose your budget')
       return
     }
+    if (!email || !sender || !content ) {
+      toast.error('Some fields are empty !!!')
+      return
+    }
+    if (!email.includes('@')) {
+      toast.error('Please enter a valid email.')
+      return
+    }
     setLoading(true)
     try {
       const response = await fetch('https://formspree.io/f/xpqyezbe' , {
@@ -108,7 +116,7 @@ const Contact = () => {
           </motion.div>
         ))}
       </div>
-      <motion.form className="flex flex-col h-auto w-full bg-white shadow-lg shadow-gray-400 rounded-lg justify-center p-3 space-y-3">
+      <motion.form className="flex flex-col h-auto w-full bg-gray-300 shadow-lg shadow-gray-400 rounded-lg justify-center p-3 space-y-3">
         <h2 className="text-black text-xl text-left font-semibold">
           Send me a message
         </h2>
@@ -164,7 +172,7 @@ const Contact = () => {
             htmlFor="budget"
             className="capitalize text-gray-900 font-semibold"
           >
-            budject
+            budget
           </label>
           <select value={budget} onChange={(e) => setBudget(e.target.value)} className="w-[95%] outline-none text-gray-900 ring-1 ring-gray-600 p-2 rounded-md focus:ring-2 focus:ring-violet-900 duration-1000 ease-in-out transition-all">
             <option>what's your budget ?</option>

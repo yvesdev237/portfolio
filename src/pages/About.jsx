@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { FaDotCircle } from "react-icons/fa";
+import profile from '../assets/profile.jpg'
 
 const About = () => {
   const infos = [
@@ -36,7 +37,8 @@ const About = () => {
       className="mt-30 flex flex-col justify-center space-y-4 p-4 scroll-mt-20"
     >
       <h4 className="text-left uppercase text-sm font-medium">about me</h4>
-      <h1 className="text-left capitalize text-2xl">
+        <img src={profile} alt={profile} className="rounded-2xl size-70 ring ring-violet-300 flex-1 object-cover" />
+      <h1 className="relative text-left capitalize text-2xl">
         Passionate about building{" "}
         <span className="font-medium text-transparent bg-clip-text bg-linear-to-l from-violet-300 to-violet-700">
           great software
