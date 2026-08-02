@@ -1,85 +1,76 @@
-import React, { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
-import { FaBars, FaWhatsapp, FaX } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from 'react'
+import logo from '../assets/logo.png'
+import { FaBars, FaWhatsapp, FaX } from 'react-icons/fa6'
+import { motion } from 'framer-motion'
 
 const Navbar = () => {
   const links = [
-    {
-      label: "about",
-      target: "#about",
-    },
-    {
-      label: "my skills",
-      target: "#skill",
-    },
-    {
-      label: "my project",
-      target: "#projects",
-    },
-    {
-      label: "contact",
-      target: "#contact",
-    },
-  ];
-  const [open, setOpen] = useState(false);
+    { label: 'about', target: '#about' },
+    { label: 'skills', target: '#skill' },
+    { label: 'projects', target: '#projects' },
+    { label: 'contact', target: '#contact' },
+  ]
+
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const preventWindowAction = () => {
-        setOpen(false)
-    }
-    window.addEventListener('scroll' , preventWindowAction)
+    const closeMenu = () => setOpen(false)
+    window.addEventListener('scroll', closeMenu)
+    return () => window.removeEventListener('scroll', closeMenu)
+  }, [])
 
-    return() => {
-      window.removeEventListener('scroll' , preventWindowAction)
-    }
-  },[])
+  const toggle = () => setOpen((value) => !value)
 
-  const toggle = () => setOpen(!open);
   return (
-    <nav className="fixed z-100 bg-white/5 backdrop-blur-3xl shadow-2xl p-3 px-6 text-white w-full flex justify-between items-center h-20">
-      <div className="flex gap-3 p-10 px-10 justify-center items-center w-auto h-20 z-50">
-        <img src={logo} alt="logo" className="h-13 w-13 rounded-full " />
-        <span className="text-md font-extrabold">Yves Dev 237</span>
+    <nav className="sticky top-3 z-50 mt-3 rounded-full border border-white/10 bg-slate-950/70 px-4 py-3 shadow-[0_10px_50px_rgba(2,12,27,0.35)] backdrop-blur-xl">
+      <div className="flex items-center justify-between">
+        <a href="#top" className="flex items-center gap-3">
+          <img src={logo} alt="Yves Dev 237 logo" className="h-10 w-10 rounded-full object-cover ring-2 ring-cyan-400/50" />
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-white">Yves Dev 237</p>
+            <p className="text-xs text-slate-400">Frontend Developer</p>
+          </div>
+        </a>
+
+        <div className="hidden items-center gap-6 md:flex">
+          {links.map((link) => (
+            <a key={link.target} href={link.target} className="text-sm font-medium text-slate-300 transition hover:text-cyan-200">
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <a href="#contact" className="hidden rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:bg-cyan-400/20 md:inline-flex">
+            Let’s talk
+          </a>
+          <button type="button" onClick={toggle} className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-100 md:hidden" aria-label="Toggle navigation">
+            {open ? <FaX className="size-5" /> : <FaBars className="size-5" />}
+          </button>
+        </div>
       </div>
-      <div onClick={toggle} className="z-50">
-        <FaBars
-          className={`size-6 cursor-pointer absolute transition-all duration-300 ease-in-out ${open ? "opacity-0 rotate-90" : "opacity-100 rotate-0"}`}
-        />
-        <FaX
-          className={`size-6 cursor-pointer transition-all duration-300 ease-in-out ${open ? "opacity-100 rotate-0" : "opacity-0 rotate-90"}`}
-        />
-      </div>
+
       {open && (
         <motion.div
-          initial = {{opacity : 0 , y : -250}} whileInView={{opacity : 1 , y : 0}} viewport={{once : true}} transition={{duration : 0.01 }}
-          className="absolute flex flex-col items-start z-10 scroll-smooth rounded-b-3xl text-white right-0 top-full  transition-all duration-500 ease-in-out w-full h-70 bg-linear-to-r from-[#0f172aee] to-[#1e293bec] backdrop-blur-3xl shadow-2xl"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="mt-3 rounded-2xl border border-white/10 bg-slate-900/95 p-4 md:hidden"
         >
-          <div className="flex flex-col items-start p-4 space-y-1 w-full ">
-            {links.map((link, i) => (
-              <a
-                href={link.target}
-                key={i}
-                onClick={() => setOpen(false)}
-                className="text-lg font-medium capitalize text-left p-2 w-full rounded-lg"
-              >
+          <div className="flex flex-col gap-2">
+            {links.map((link) => (
+              <a key={link.target} href={link.target} onClick={() => setOpen(false)} className="rounded-lg px-2 py-2 text-base font-medium text-slate-200 transition hover:bg-white/5">
                 {link.label}
               </a>
             ))}
           </div>
-          <div className="w-full justify-center items-center flex ">
-            <a
-              href="https://wa.me/237699959447"
-              className="w-[90%] my-1.5 p-2 px-2 text-lg rounded-lg bg-violet-800 backdrop:blur-3xl shadow-sm shadow-gray-50 hover:ring-2 hover:ring-white flex gap-3 justify-center items-center capitalize font-semibold"
-            >
-              <FaWhatsapp className="size-7" />
-              Send me a message
-            </a>
-          </div>
+          <a href="https://wa.me/237699959447" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 px-4 py-3 text-sm font-semibold text-slate-950">
+            <FaWhatsapp className="size-4" /> Send me a message
+          </a>
         </motion.div>
       )}
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

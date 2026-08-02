@@ -8,55 +8,89 @@ import Skill from './pages/Skill'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Footer from './pages/Footer'
-import { FaArrowUp, FaUsersCog, FaUsersSlash } from 'react-icons/fa'
-import { FaArrowUpRightDots, FaFolderOpen, FaUsers} from 'react-icons/fa6'
+import { FaArrowUp } from 'react-icons/fa'
+import { FaArrowUpRightDots, FaFolderOpen, FaUsers } from 'react-icons/fa6'
 
 const App = () => {
-  const [scroll , setScroll] = useState(0);
-  const [showArrow , setShowArrow] = useState(false)
+  const [scroll, setScroll] = useState(0)
+  const [showArrow, setShowArrow] = useState(false)
+  const [parallaxOffset, setParallaxOffset] = useState(0)
 
   useEffect(() => {
-    const updatedScrool = () => {
-      if (window.scrollY > 100) {
-        setShowArrow(true)
-      } else {
-        setShowArrow(false)
-      }
-      const scrollTop = window.scrollY;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (scrollTop / height) * 100 ;
+    const updateScroll = () => {
+      const scrollTop = window.scrollY
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+      const progress = height > 0 ? (scrollTop / height) * 100 : 0
+
+      setShowArrow(scrollTop > 100)
       setScroll(progress)
-    };
-    window.addEventListener('scroll' ,updatedScrool )
-    return () => window.removeEventListener('scroll' , updatedScrool)
-  } , []);
-  const scroolTop = () => {
-    window.scrollTo({
-      top : 0 ,
-      behavior : "smooth" ,
-    })
+      setParallaxOffset(Math.min(scrollTop * 0.12, 80))
+    }
+
+    updateScroll()
+    window.addEventListener('scroll', updateScroll)
+    return () => window.removeEventListener('scroll', updateScroll)
+  }, [])
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
   return (
-    <div className='relative flex flex-col min-h-screen w-full p-0 m-0'>
-      <Navbar />
-      <Hero />
-      <motion.section initial = {{opacity : 0 , x : 100}} whileInView={{opacity : 1 , x: 0}} transition={{duration: 1.1}} viewport={{once : true}} className=' w-full h-25 flex justify-center items-center space-x-3 bg-transparent backdrop-blur-2xl rounded-l-full ml-4 ring-gray-400 ring-2'>
-        <StatsCount label="experience" end={1} duration={1500} icon={<FaArrowUpRightDots className='size-8'/>}/>
-        <StatsCount label="projects" end={1} duration={1500} icon={<FaFolderOpen className='size-8'/>}/>
-        <StatsCount label="clients satisfied" end={1} duration={1500} icon={<FaUsers className='size-8'/>}/>
-      </motion.section>
-      <About/>
-      <Skill />
-      <Projects />
-      <Contact />
-      <Footer />
-      {showArrow && <div className="fixed bottom-15 right-3 flex justify-center items-center cursor-pointer text-center rounded-lg h-15 w-15 bg-violet-700" onClick={scroolTop}>
-            <svg className="w-full h-full -rotate-90 absolute left-1.5 -top-2">
-                <circle  cx= "24" cy ="24" r= "20" strokeWidth="4" className="stroke-gray-300 fill-none"/>
-                <circle  cx= "24" cy ="24" r= "20" strokeWidth="4" strokeDasharray= "125" strokeDashoffset= {125 - (125 * scroll)/100} className="stroke-indigo-500 transition-all fill-none"/>
-            </svg>
-            <FaArrowUp className="text-sm text-white p-2 size-10"/>
-        </div>}
+    <div className="relative min-h-screen overflow-x-hidden bg-transparent text-slate-100">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[-6%] top-[-8%] h-64 w-64 rounded-full bg-cyan-400/20 blur-3xl" style={{ transform: `translateY(${parallaxOffset * 0.7}px)` }} />
+        <div className="absolute bottom-[20%] right-[-5%] h-72 w-72 rounded-full bg-blue-600/20 blur-3xl" style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }} />
+      </div>
+
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-4 pb-16 sm:px-6 lg:px-8">
+        <Navbar />
+        <Hero parallaxOffset={parallaxOffset} />
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mt-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-4 shadow-[0_20px_80px_rgba(2,12,27,0.35)] backdrop-blur-xl sm:p-6 lg:mt-8"
+        >
+          <div className="grid gap-3 md:grid-cols-3">
+            <StatsCount label="experience" end={1} duration={1500} icon={<FaArrowUpRightDots className="size-6" />} />
+            <StatsCount label="projects" end={3} duration={1500} icon={<FaFolderOpen className="size-6" />} />
+            <StatsCount label="clients satisfied" end={2} duration={1500} icon={<FaUsers className="size-6" />} />
+          </div>
+        </motion.section>
+
+        <About />
+        <Skill />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
+
+      {showArrow && (
+        <button
+          type="button"
+          className="fixed bottom-5 right-5 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/40 bg-slate-950/90 shadow-[0_12px_30px_rgba(6,182,212,0.28)] backdrop-blur-xl transition hover:scale-105"
+          onClick={scrollTop}
+          aria-label="Back to top"
+        >
+          <svg className="absolute h-full w-full -rotate-90" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" strokeWidth="4" className="fill-none stroke-slate-700" />
+            <circle
+              cx="24"
+              cy="24"
+              r="20"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeDasharray="125"
+              strokeDashoffset={125 - (125 * scroll) / 100}
+              className="fill-none stroke-cyan-400 transition-all"
+            />
+          </svg>
+          <FaArrowUp className="relative text-lg text-cyan-200" />
+        </button>
+      )}
     </div>
   )
 }
