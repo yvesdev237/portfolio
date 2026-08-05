@@ -22,7 +22,11 @@ body {
   text-align: left;
   color: #f8fbff;
   background:
-    radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 30%),
+    radial-gradient(
+      circle at top left,
+      rgba(34, 211, 238, 0.16),
+      transparent 30%
+    ),
     linear-gradient(135deg, #030712 0%, #071224 42%, #0d2a4b 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
