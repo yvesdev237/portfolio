@@ -60,7 +60,7 @@ const App = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative mt-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-4 shadow-[0_20px_80px_rgba(2,12,27,0.35)] backdrop-blur-xl sm:p-6 lg:mt-8"
+          className="relative mt-6 rounded-[58px] border border-white/10 bg-slate-900/60 p-4 shadow-[0_20px_80px_rgba(2,12,27,0.35)] backdrop-blur-xl sm:p-6 lg:mt-8"
         >
           <div className="grid gap-3 md:grid-cols-3">
             <StatsCount
@@ -72,13 +72,13 @@ const App = () => {
             />
             <StatsCount
               label="projects"
-              end={3}
+              end={1}
               duration={1500}
               icon={<FaFolderOpen className="size-6" />}
             />
             <StatsCount
               label="clients satisfied"
-              end={2}
+              end={1}
               duration={1500}
               icon={<FaUsers className="size-6" />}
             />
