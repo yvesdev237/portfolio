@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/wlogo.png";
+import logo from "../assets/wlogo.svg";
 import { FaFacebook, FaGithub, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
@@ -26,7 +26,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Yves Dev 237 logo"
-              className="h-10 w-10 rounded-full object-cover"
+              className="h-15 w-15 rounded-full object-cover"
             />
             <div>
               <p className="text-lg font-semibold text-white">Yves Dev 237</p>

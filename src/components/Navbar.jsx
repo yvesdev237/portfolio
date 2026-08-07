@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/wlogo.png";
+import logo from "../assets/wlogo.svg";
 import { FaBars, FaWhatsapp, FaX } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
