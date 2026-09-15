@@ -12,8 +12,10 @@ import {
   FaNodeJs,
   FaReact,
 } from "react-icons/fa6";
+import { useLanguage } from "../context/LanguageContext";
 
 const Skill = () => {
+  const { t } = useLanguage();
   const skills = [
     {
       title: "HTML",
@@ -59,15 +61,20 @@ const Skill = () => {
 
   const categories = [
     {
-      title: "Frontend",
-      items: ["React", "Tailwind CSS", "UI systems", "Responsive layouts"],
+      title: t("frontend"),
+      items: [
+        "React",
+        "Tailwind CSS",
+        t("uiSystemsShort"),
+        t("responsiveLayouts"),
+      ],
     },
     {
-      title: "Backend",
-      items: ["Node.js", "APIs", "Database basics", "Auth flows"],
+      title: t("backend"),
+      items: ["Node.js", "APIs", t("databaseBasics"), t("authFlows")],
     },
     {
-      title: "Tools",
+      title: t("tools"),
       items: ["Git", "GitHub", "Figma", "Vercel"],
     },
   ];
@@ -85,21 +92,20 @@ const Skill = () => {
         className="max-w-3xl"
       >
         <div className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
-          Tech stack
+          {t("techStack")}
         </div>
         <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
-          Skills & technologies
+          {t("skillsTitle")}
         </h2>
         <p className="mt-3 text-lg leading-8 text-slate-300">
-          A mix of frontend craft, UI thinking and modern tooling that helps
-          ship polished products quickly.
+          {t("skillsDescription")}
         </p>
       </motion.div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="space-y-4">
           <h3 className="text-sm uppercase tracking-[0.25em] text-slate-400">
-            Proficiency
+            {t("proficiency")}
           </h3>
           {skills.map((skill, index) => (
             <motion.div
@@ -112,7 +118,9 @@ const Skill = () => {
             >
               <div className="mb-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  {skill.icon}
+                  <span className="skill-icon-tile flex size-8 items-center justify-center rounded-lg bg-slate-950 text-white">
+                    {skill.icon}
+                  </span>
                   <span className="text-sm font-semibold text-slate-100">
                     {skill.title}
                   </span>
@@ -146,14 +154,13 @@ const Skill = () => {
             </div>
           ))}
 
-          <div className="rounded-[24px] border border-white/10 bg-gradient-to-r from-cyan-400/10 via-blue-600/10 to-transparent p-4">
-            <div className="flex items-center gap-3 text-slate-200">
+          <div className="skill-vcs-panel rounded-[24px] border border-white/10 bg-gradient-to-r from-cyan-400/10 via-blue-600/10 to-transparent p-4">
+            <div className="skill-vcs-icons flex items-center gap-3 text-slate-200">
               <FaGitAlt className="size-5 text-cyan-300" />
               <FaGithub className="size-5 text-slate-100" />
             </div>
             <p className="mt-3 text-sm leading-7 text-slate-300">
-              Version control, collaborative workflows and reliable handoff are
-              part of every project I build.
+              {t("versionControl")}
             </p>
           </div>
         </div>

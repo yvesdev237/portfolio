@@ -14,6 +14,222 @@ html {
   font-family: Inter, "Segoe UI", Roboto, sans-serif;
 }
 
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+html.light [class*="bg-slate-950/70"],
+html.light [class*="bg-slate-950/60"] {
+  background-color: #ffffff !important;
+}
+
+html.light [class*="bg-slate-900/80"],
+html.light [class*="bg-slate-900/70"],
+html.light [class*="bg-slate-900/60"],
+html.light [class*="bg-slate-700/10"] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light [class*="text-white"],
+html.light [class*="text-slate-100"],
+html.light [class*="text-slate-200"] {
+  color: #0f172a !important;
+}
+
+html.light [class*="text-slate-300"] {
+  color: #475569 !important;
+}
+
+html.light [class*="text-slate-400"],
+html.light [class*="text-slate-500"] {
+  color: #64748b !important;
+}
+
+html.light [class*="text-gray-300"] {
+  color: #475569 !important;
+}
+
+html.light [class*="text-gray-400"] {
+  color: #64748b !important;
+}
+
+html.light [class*="text-emerald-300"] {
+  color: #166534 !important;
+}
+
+html.light [class*="border-white/"] {
+  border-color: #e2e8f0 !important;
+}
+
+html.light [class*="bg-white/"] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light [class*="text-cyan-200"],
+html.light [class*="text-cyan-300"] {
+  color: #0f172a !important;
+}
+
+html.light [class*="text-slate-950"] {
+  color: #ffffff !important;
+}
+
+html.light [class*="border-cyan-400/"] {
+  border-color: #e2e8f0 !important;
+}
+
+html.light [class*="bg-cyan-400/"] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light [class*="bg-linear-to-r"],
+html.light [class*="bg-gradient-to-r"] {
+  background-image: none !important;
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+html.light [class*="from-cyan-400"] {
+  --tw-gradient-from: #0f172a !important;
+}
+
+html.light [class*="to-blue-600"] {
+  --tw-gradient-to: #0f172a !important;
+}
+
+html.light [class*="to-transparent"] {
+  --tw-gradient-to: rgba(255, 255, 255, 0) !important;
+}
+
+html.light input,
+html.light textarea,
+html.light select {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #8290a3;
+}
+
+html.light option {
+  color: #0f172a;
+  background: #ffffff;
+}
+
+html.light [class*="bg-cyan-400 "] {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+html.light [class*="bg-cyan-400/20"],
+html.light [class*="bg-blue-600/20"],
+html.light [class*="bg-cyan-400/10"] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light [class*="bg-blue-600/20"] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light [class*="shadow-"] {
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light .accent-gradient {
+  background-image: none;
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
+}
+
+html.light .glass {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+html.light [class*="bg-cyan-400/20"],
+html.light [class*="bg-blue-600/20"],
+html.light [class*="bg-[radial-gradient"] {
+  background-image: none !important;
+  background-color: #f1f5f9 !important;
+}
+
+html.light [class*="bg-cyan-400/20"] {
+  opacity: 0.7;
+}
+
+html.light [class*="bg-gradient-to-br"] [class*="text-white"] {
+  color: #ffffff !important;
+}
+
+html.light [class*="bg-slate-950/30"] {
+  background-color: rgba(15, 23, 42, 0.72) !important;
+}
+
+html.light .hero-shipping-copy {
+  color: #ffffff !important;
+}
+
+html.light .hero-shipping-label {
+  color: #ffffff !important;
+}
+
+html.light .skill-icon-tile {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+html.light .skill-icon-tile [class*="text-white"] {
+  color: #ffffff !important;
+}
+
+html.light .skill-vcs-panel {
+  background-image: none !important;
+  background-color: #f1f5f9 !important;
+}
+
+html.light .skill-vcs-icons [class*="text-cyan-300"] {
+  color: #0e7490 !important;
+}
+
+html.light .skill-vcs-icons [class*="text-slate-100"] {
+  color: #0f172a !important;
+}
+
+html.light .back-to-top-button {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+html.light .back-to-top-icon {
+  color: #ffffff !important;
+}
+
+html.light .demo-dialog {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .demo-dialog h3,
+html.light .demo-dialog p:not([class*="text-white"]) {
+  color: #0f172a !important;
+}
+
+html.light body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light body::-webkit-scrollbar-thumb {
+  background: #0f172a;
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -17,11 +17,11 @@ const Hero = ({ parallaxOffset = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9 }}
       viewport={{ once: true }}
-      className="relative mt-15 overflow-hidden rounded-[32px] border border-white/10 bg-slate-950/70 px-5 py-10 shadow-[0_20px_80px_rgba(2,12,27,0.4)] backdrop-blur-xl sm:px-8 sm:py-14 lg:mt-16 lg:px-10 lg:py-16"
+      className="relative mt-15 overflow-hidden rounded-4xl border border-white/10 bg-slate-950/70 px-5 py-10 shadow-[0_20px_80px_rgba(2,12,27,0.4)] backdrop-blur-xl sm:px-8 sm:py-14 lg:mt-16 lg:px-10 lg:py-16"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_45%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_45%)]" />
 
-      <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div className="space-y-6">
           <div className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
             <FaRocket className="mr-2" /> Available for freelance & remote work
@@ -29,8 +29,7 @@ const Hero = ({ parallaxOffset = 0 }) => {
 
           <div className="space-y-4">
             <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Building polished digital experiences with a{" "}
-              <span className="accent-gradient">modern blue-tech vibe</span>.
+              Building polished digital experiences
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
               I’m Yves, a frontend developer crafting elegant interfaces, smooth
@@ -52,7 +51,7 @@ const Hero = ({ parallaxOffset = 0 }) => {
           <div className="flex flex-col gap-3 sm:flex-row">
             <a
               href="#projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.01]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-cyan-400 to-blue-600 px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.01]"
             >
               <FaCode /> View my work
             </a>
@@ -67,7 +66,7 @@ const Hero = ({ parallaxOffset = 0 }) => {
 
         <motion.div
           style={{ y: parallaxOffset * 0.2 }}
-          className="rounded-[24px] border border-white/10 bg-slate-900/70 p-5 shadow-[0_18px_60px_rgba(2,12,27,0.32)] backdrop-blur-xl"
+          className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-[0_18px_60px_rgba(2,12,27,0.32)] backdrop-blur-xl"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -92,17 +91,17 @@ const Hero = ({ parallaxOffset = 0 }) => {
                 key={title}
                 className="rounded-2xl border border-white/10 bg-white/5 p-3"
               >
-                <p className="text-sm font-semibold text-white">{title}</p>
+                <p className="text-sm font-semibold text-slate-200">{title}</p>
                 <p className="mt-1 text-sm leading-6 text-slate-400">{text}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-gradient-to-r from-cyan-400/10 to-blue-600/10 p-4">
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-200">
+          <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-linear-to-r from-cyan-400/10 to-blue-600/10 p-4">
+            <p className="text-sm uppercase tracking-[0.24em] text-cyan-200 hero-shipping-label">
               Now shipping
             </p>
-            <p className="mt-2 text-lg text-slate-100">
+            <p className="mt-2 text-lg text-slate-200 hero-shipping-copy">
               Modern landing pages, portfolio upgrades and interactive web apps.
             </p>
           </div>

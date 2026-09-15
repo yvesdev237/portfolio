@@ -1,8 +1,10 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 export const ProjectCard = ({ description, title, image, link }) => {
+  const { t } = useLanguage();
   return (
     <motion.article
       whileHover={{ y: -4, scale: 1.01 }}
@@ -26,7 +28,7 @@ export const ProjectCard = ({ description, title, image, link }) => {
       </div>
       <div className="space-y-3 p-5">
         <div className="inline-flex rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
-          Featured project
+          {t("featuredProject")}
         </div>
         <h3 className="text-xl font-semibold text-white">{title}</h3>
         <p className="text-base leading-7 text-slate-300">{description}</p>

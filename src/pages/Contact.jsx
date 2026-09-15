@@ -8,8 +8,10 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { TailSpin } from "react-loader-spinner";
+import { useLanguage } from "../context/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [sender, setSender] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -82,19 +84,18 @@ const Contact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="mt-24 scroll-mt-24 rounded-[32px] p-5 shadow-[0_20px_80px_rgba(2,12,27,0.32)] backdrop-blur-xl sm:p-8"
+      className="mt-24 scroll-mt-24 rounded-4xl p-5 shadow-[0_20px_80px_rgba(2,12,27,0.32)] backdrop-blur-xl sm:p-8"
     >
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-5">
           <div className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
-            Contact
+            {t("contact")}
           </div>
           <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-            Let’s build something memorable together
+            {t("contactTitle")}
           </h2>
           <p className="max-w-xl text-lg leading-8 text-slate-300">
-            Open for freelance projects, full-time roles and interesting
-            collaborations. I usually reply within a day.
+            {t("contactDescription")}
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -117,12 +118,12 @@ const Contact = () => {
           className="rounded-[24px] border border-white/10 bg-slate-900/80 p-4 shadow-[0_18px_60px_rgba(2,12,27,0.25)] sm:p-6"
         >
           <h3 className="text-xl font-semibold text-white">
-            Send me a message
+            {t("sendMessageTitle")}
           </h3>
           <div className="mt-4 grid gap-4">
             <div className="grid gap-4 md:grid-cols-2">
               <label className="text-sm font-medium text-slate-300">
-                <span className="mb-2 block">Name *</span>
+                <span className="mb-2 block">{t("name")} *</span>
                 <input
                   type="text"
                   className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 outline-none ring-0 transition focus:border-cyan-400/50"
@@ -133,7 +134,7 @@ const Contact = () => {
                 />
               </label>
               <label className="text-sm font-medium text-slate-300">
-                <span className="mb-2 block">Email *</span>
+                <span className="mb-2 block">{t("email")} *</span>
                 <input
                   type="email"
                   className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 outline-none transition focus:border-cyan-400/50"
@@ -146,24 +147,24 @@ const Contact = () => {
             </div>
 
             <label className="text-sm font-medium text-slate-300">
-              <span className="mb-2 block">Subject</span>
+              <span className="mb-2 block">{t("subject")}</span>
               <input
                 type="text"
                 className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 outline-none transition focus:border-cyan-400/50"
-                placeholder="What’s the project about?"
+                placeholder={t("projectSubject")}
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
               />
             </label>
 
             <label className="text-sm font-medium text-slate-300">
-              <span className="mb-2 block">Budget</span>
+              <span className="mb-2 block">{t("budget")}</span>
               <select
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
                 className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 outline-none transition focus:border-cyan-400/50"
               >
-                <option value="">What’s your budget?</option>
+                <option value="">{t("chooseBudget")}</option>
                 <option value="$100 ~ $300">$100 ~ $300</option>
                 <option value="$300 ~ $500">$300 ~ $500</option>
                 <option value="$500 +">$500 +</option>
@@ -171,11 +172,11 @@ const Contact = () => {
             </label>
 
             <label className="text-sm font-medium text-slate-300">
-              <span className="mb-2 block">Message *</span>
+              <span className="mb-2 block">{t("message")} *</span>
               <textarea
                 rows="5"
                 className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 outline-none transition focus:border-cyan-400/50"
-                placeholder="Tell me a bit about your idea..."
+                placeholder={t("ideaMessage")}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
@@ -192,7 +193,7 @@ const Contact = () => {
               <TailSpin height={20} width={20} color="#0f172a" />
             ) : (
               <>
-                <FaTelegramPlane className="size-4" /> Send message
+                <FaTelegramPlane className="size-4" /> {t("send")}
               </>
             )}
           </button>

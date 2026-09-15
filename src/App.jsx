@@ -6,12 +6,15 @@ import { StatsCount } from "./components/StatsCount";
 import About from "./pages/About";
 import Skill from "./pages/Skill";
 import Projects from "./pages/Projects";
+import Store from "./pages/Store";
 import Contact from "./pages/Contact";
 import Footer from "./pages/Footer";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowUpRightDots, FaFolderOpen, FaUsers } from "react-icons/fa6";
+import { useLanguage } from "./context/LanguageContext";
 
 const App = () => {
+  const { t } = useLanguage();
   const [scroll, setScroll] = useState(0);
   const [showArrow, setShowArrow] = useState(false);
   const [parallaxOffset, setParallaxOffset] = useState(0);
@@ -65,19 +68,19 @@ const App = () => {
           <div className="grid gap-3 md:grid-cols-3">
             <StatsCount
               position={""}
-              label="experience"
+              label={t("experience")}
               end={1}
               duration={1500}
               icon={<FaArrowUpRightDots className="size-6" />}
             />
             <StatsCount
-              label="projects"
-              end={1}
+              label={t("projects")}
+              end={2}
               duration={1500}
               icon={<FaFolderOpen className="size-6" />}
             />
             <StatsCount
-              label="clients satisfied"
+              label={t("clientsSatisfied")}
               end={1}
               duration={1500}
               icon={<FaUsers className="size-6" />}
@@ -88,6 +91,7 @@ const App = () => {
         <About />
         <Skill />
         <Projects />
+        <Store />
         <Contact />
         <Footer />
       </div>
@@ -95,7 +99,7 @@ const App = () => {
       {showArrow && (
         <button
           type="button"
-          className="fixed z-50 bottom-5 right-5 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/40 bg-slate-950/90 shadow-[0_12px_30px_rgba(6,182,212,0.28)] backdrop-blur-xl transition hover:scale-105"
+          className="back-to-top-button fixed z-50 bottom-5 right-5 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/40 bg-slate-950/90 shadow-[0_12px_30px_rgba(6,182,212,0.28)] backdrop-blur-xl transition hover:scale-105"
           onClick={scrollTop}
           aria-label="Back to top"
         >
@@ -121,7 +125,7 @@ const App = () => {
               className="fill-none stroke-cyan-400 transition-all"
             />
           </svg>
-          <FaArrowUp className="relative text-lg text-cyan-200" />
+          <FaArrowUp className="back-to-top-icon relative text-lg text-cyan-200" />
         </button>
       )}
     </div>
