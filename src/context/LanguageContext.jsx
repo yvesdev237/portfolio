@@ -36,6 +36,10 @@ const translations = {
     nowShipping: "Now shipping",
     nowShippingDescription:
       "Modern landing pages, portfolio upgrades and interactive web apps.",
+    highlightReact: "React",
+    highlightTailwind: "Tailwind CSS",
+    highlightMotion: "UI motion",
+    highlightResponsive: "Responsive design",
     aboutMe: "About me",
     aboutTitle: "Passionate about building",
     greatSoftware: "great software",
@@ -128,6 +132,10 @@ const translations = {
     nowShipping: "En production",
     nowShippingDescription:
       "Landing pages modernes, portfolios et applications web interactives.",
+    highlightReact: "React",
+    highlightTailwind: "Tailwind CSS",
+    highlightMotion: "Animation UI",
+    highlightResponsive: "Design responsive",
     aboutMe: "A propos",
     aboutTitle: "Passionne par la creation de",
     greatSoftware: "logiciels de qualite",

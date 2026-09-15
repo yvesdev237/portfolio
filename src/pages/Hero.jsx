@@ -1,13 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaCode, FaRocket } from "react-icons/fa6";
+import { useLanguage } from "../context/LanguageContext";
 
 const Hero = ({ parallaxOffset = 0 }) => {
+  const { t } = useLanguage();
   const highlights = [
-    "React",
-    "Tailwind CSS",
-    "UI motion",
-    "Responsive design",
+    t("highlightReact"),
+    t("highlightTailwind"),
+    t("highlightMotion"),
+    t("highlightResponsive"),
   ];
 
   return (
@@ -24,16 +26,15 @@ const Hero = ({ parallaxOffset = 0 }) => {
       <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div className="space-y-6">
           <div className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
-            <FaRocket className="mr-2" /> Available for freelance & remote work
+            <FaRocket className="mr-2" /> {t("available")}
           </div>
 
           <div className="space-y-4">
             <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Building polished digital experiences
+              {t("heroTitle")}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              I’m Yves, a frontend developer crafting elegant interfaces, smooth
-              motion and memorable user journeys .
+              {t("heroDescription")}
             </p>
           </div>
 
@@ -53,13 +54,13 @@ const Hero = ({ parallaxOffset = 0 }) => {
               href="#projects"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-cyan-400 to-blue-600 px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.01]"
             >
-              <FaCode /> View my work
+              <FaCode /> {t("viewWork")}
             </a>
             <a
               href="#contact"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-slate-200 transition hover:border-cyan-300/40 hover:bg-cyan-400/10"
             >
-              Let’s talk <FaArrowRight />
+              {t("letsTalk")} <FaArrowRight />
             </a>
           </div>
         </div>
@@ -71,10 +72,10 @@ const Hero = ({ parallaxOffset = 0 }) => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.24em] text-slate-400">
-                Current focus
+                {t("currentFocus")}
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-white">
-                Fast products, clear storytelling
+                {t("focusTitle")}
               </h2>
             </div>
             <div className="rounded-2xl border border-cyan-400/30 bg-cyan-400/10 p-3 text-cyan-200">
@@ -84,8 +85,8 @@ const Hero = ({ parallaxOffset = 0 }) => {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
-              ["UI systems", "Design systems and scalable layouts"],
-              ["Motion", "Fluid transitions and thoughtful engagement"],
+              [t("uiSystems"), t("uiSystemsDescription")],
+              [t("motion"), t("motionDescription")],
             ].map(([title, text]) => (
               <div
                 key={title}
@@ -99,10 +100,10 @@ const Hero = ({ parallaxOffset = 0 }) => {
 
           <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-linear-to-r from-cyan-400/10 to-blue-600/10 p-4">
             <p className="text-sm uppercase tracking-[0.24em] text-cyan-200 hero-shipping-label">
-              Now shipping
+              {t("nowShipping")}
             </p>
             <p className="mt-2 text-lg text-slate-200 hero-shipping-copy">
-              Modern landing pages, portfolio upgrades and interactive web apps.
+              {t("nowShippingDescription")}
             </p>
           </div>
         </motion.div>
