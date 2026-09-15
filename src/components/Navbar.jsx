@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/wlogo.svg";
+import whiteThemeLogo from "../assets/whitethemelogo.svg";
 import {
   FaBars,
   FaGlobe,
@@ -48,7 +49,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between gap-7">
         <a href="#top" className="flex items-center gap-3">
           <img
-            src={logo}
+            src={darkMode ? logo : whiteThemeLogo}
             alt="Yves Dev 237 logo"
             className="h-10 w-10 rounded-full object-cover ring-2 ring-cyan-400/50"
           />

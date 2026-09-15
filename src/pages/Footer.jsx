@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/wlogo.svg";
+import whiteThemeLogo from "../assets/whitethemelogo.svg";
 import { FaFacebook, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 
 const Footer = () => {
   const { t } = useLanguage();
+  const [isLightTheme, setIsLightTheme] = useState(() =>
+    document.documentElement.classList.contains("light"),
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsLightTheme(document.documentElement.classList.contains("light"));
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+    return () => observer.disconnect();
+  }, []);
   const social = [
     {
       icon: <FaGithub className="size-5" />,
@@ -26,7 +39,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3">
             <img
-              src={logo}
+              src={isLightTheme ? whiteThemeLogo : logo}
               alt="Yves Dev 237 logo"
               className="h-15 w-15 rounded-full object-cover"
             />
