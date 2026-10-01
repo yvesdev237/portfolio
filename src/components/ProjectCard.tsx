@@ -83,7 +83,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 rel="noreferrer"
                 className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-200 sm:flex-none"
               >
-                {t("projects.seeLive")} {" "}
+                {t("projects.seeLive")}{" "}
                 <FaArrowUpRightFromSquare size={13} aria-hidden="true" />
               </a>
             ) : null}
@@ -94,7 +94,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 rel="noreferrer"
                 className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full border border-white/30 bg-slate-950/40 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-slate-950/70 sm:flex-none"
               >
-                {t("projects.caseStudy")} {" "}
+                {t("projects.caseStudy")}{" "}
                 <FaArrowUpRightFromSquare size={13} aria-hidden="true" />
               </a>
             ) : null}
@@ -104,7 +104,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 onClick={() => setIsOpen(true)}
                 className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full border border-white/30 bg-slate-950/40 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-slate-950/70 sm:flex-none"
               >
-                {t("projects.details")} {" "}
+                {t("projects.details")}{" "}
                 <FaArrowUpRightFromSquare size={13} aria-hidden="true" />
               </button>
             ) : null}
@@ -150,17 +150,41 @@ export const ProjectCard = ({ project }: { project: Project }) => {
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-4">
-                  <InfoRow label={t("projects.project")} value={t(`projects.${projectKey}.title`)} />
-                  <InfoRow label={t("projects.type")} value={t(`projects.${projectKey}.type`)} />
-                  <InfoRow label={t("projects.goal")} value={t(`projects.${projectKey}.goal`)} />
-                  <InfoRow label={t("projects.challenge")} value={t(`projects.${projectKey}.challenge`)} />
+                  <InfoRow
+                    label={t("projects.project")}
+                    value={t(`projects.${projectKey}.title`)}
+                  />
+                  <InfoRow
+                    label={t("projects.type")}
+                    value={t(`projects.${projectKey}.type`)}
+                  />
+                  <InfoRow
+                    label={t("projects.goal")}
+                    value={t(`projects.${projectKey}.goal`)}
+                  />
+                  <InfoRow
+                    label={t("projects.challenge")}
+                    value={t(`projects.${projectKey}.challenge`)}
+                  />
                 </div>
 
                 <div className="space-y-4">
-                  <InfoRow label={t("projects.solution")} value={t(`projects.${projectKey}.solution`)} />
-                  <InfoRow label={t("projects.role")} value={t(`projects.${projectKey}.role`)} />
-                  <InfoRow label={t("projects.stack")} value={caseStudy.stack} />
-                  <InfoRow label={t("projects.liveLink")} value={caseStudy.liveLink} />
+                  <InfoRow
+                    label={t("projects.solution")}
+                    value={t(`projects.${projectKey}.solution`)}
+                  />
+                  <InfoRow
+                    label={t("projects.role")}
+                    value={t(`projects.${projectKey}.role`)}
+                  />
+                  <InfoRow
+                    label={t("projects.stack")}
+                    value={caseStudy.stack}
+                  />
+                  <InfoRow
+                    label={t("projects.liveLink")}
+                    value={caseStudy.liveLink}
+                  />
                 </div>
               </div>
 
@@ -172,7 +196,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                   {caseStudy.keyFeatures.map((_, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                      <span>{t(`projects.${projectKey}.features.${index}`)}</span>
+                      <span>
+                        {t(`projects.${projectKey}.features.${index}`)}
+                      </span>
                     </li>
                   ))}
                 </ul>

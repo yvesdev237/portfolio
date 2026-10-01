@@ -111,7 +111,10 @@ const App = () => {
           id="services"
           className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8"
         >
-          <SectionHeading eyebrow={t("services.eyebrow")} title={t("services.title")} />
+          <SectionHeading
+            eyebrow={t("services.eyebrow")}
+            title={t("services.title")}
+          />
           <Services services={services} />
         </section>
 

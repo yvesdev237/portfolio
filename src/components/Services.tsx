@@ -35,9 +35,7 @@ export const Services = ({ services }: { services: Service[] }) => {
       ))}
 
       <div className="md:col-span-3 mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-stone-300">
-          {t("services.note")}
-        </p>
+        <p className="text-sm text-stone-300">{t("services.note")}</p>
         <a
           href="#contact"
           className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-5 py-3 text-sm font-medium text-emerald-200 transition-transform hover:-translate-y-0.5 hover:bg-emerald-500/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"

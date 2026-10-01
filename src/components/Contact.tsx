@@ -203,7 +203,9 @@ export const Contact = () => {
             disabled={isSubmitting}
             className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-6 py-3.5 text-sm font-medium text-slate-950 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:cursor-wait disabled:opacity-60"
           >
-            {isSubmitting ? t("contact.form.sending") : t("contact.form.submit")}
+            {isSubmitting
+              ? t("contact.form.sending")
+              : t("contact.form.submit")}
           </button>
 
           {status ? (

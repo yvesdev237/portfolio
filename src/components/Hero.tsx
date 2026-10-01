@@ -50,7 +50,7 @@ export const Hero = () => {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-sm font-medium text-slate-950 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
                 >
-                  {t("hero.discuss")} {" "}
+                  {t("hero.discuss")}{" "}
                   <FaArrowRight size={16} aria-hidden="true" />
                 </a>
                 <a
@@ -111,7 +111,9 @@ export const Hero = () => {
                     <span className="h-2 w-2 rounded-full bg-yellow-500" />
                   </div>
                   <span className="min-w-0 flex-1 truncate rounded-md border border-slate-200 bg-white px-3 py-1 text-center text-[9px] text-slate-500 sm:text-[10px]">
-                    {featuredProject ? t(`projects.${featuredProjectKey}.title`) : t("hero.featuredProject")}
+                    {featuredProject
+                      ? t(`projects.${featuredProjectKey}.title`)
+                      : t("hero.featuredProject")}
                   </span>
                 </div>
                 <a
@@ -139,7 +141,11 @@ export const Hero = () => {
                 >
                   <img
                     src={featuredProject?.image ?? "/images/montcameroon.png"}
-                    alt={featuredProject ? t(`projects.${featuredProjectKey}.alt`) : t("hero.hotelAlt")}
+                    alt={
+                      featuredProject
+                        ? t(`projects.${featuredProjectKey}.alt`)
+                        : t("hero.hotelAlt")
+                    }
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.025]"
                   />
                   <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[10px] font-semibold text-slate-950 shadow-lg transition-colors group-hover:bg-emerald-200 sm:bottom-4 sm:right-4 sm:px-4 sm:py-2.5 sm:text-xs">

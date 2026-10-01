@@ -15,7 +15,8 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const nextLanguage = i18n.resolvedLanguage === "fr" ? "en" : "fr";
-  const languageLabel = nextLanguage === "fr" ? "switchToFrench" : "switchToEnglish";
+  const languageLabel =
+    nextLanguage === "fr" ? "switchToFrench" : "switchToEnglish";
   const whatsappUrl = `https://wa.me/237699959447?text=${encodeURIComponent(t("contact.whatsappMessage"))}`;
 
   const languageButton = (className: string) => (
@@ -54,7 +55,9 @@ export const Navbar = () => {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          {languageButton("inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 px-3 text-xs font-semibold text-stone-100 transition-colors hover:bg-white/10")}
+          {languageButton(
+            "inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 px-3 text-xs font-semibold text-stone-100 transition-colors hover:bg-white/10",
+          )}
           <a
             href={whatsappUrl}
             target="_blank"
@@ -68,9 +71,7 @@ export const Navbar = () => {
 
         <button
           type="button"
-          aria-label={
-            menuOpen ? t("nav.closeMenu") : t("nav.openMenu")
-          }
+          aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
           aria-expanded={menuOpen}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-stone-100 md:hidden"
           onClick={() => setMenuOpen((value) => !value)}
@@ -110,8 +111,12 @@ export const Navbar = () => {
                 {t("nav.startProject")}
               </a>
               <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-4">
-                <span className="text-sm text-stone-400">{t("nav.language")}</span>
-                {languageButton("inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 px-3 text-xs font-semibold text-stone-100 transition-colors hover:bg-white/10")}
+                <span className="text-sm text-stone-400">
+                  {t("nav.language")}
+                </span>
+                {languageButton(
+                  "inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 px-3 text-xs font-semibold text-stone-100 transition-colors hover:bg-white/10",
+                )}
               </div>
             </div>
           </motion.div>

@@ -6,7 +6,8 @@ const resources = {
     translation: {
       metadata: {
         title: "Yves Dev 237 | Freelance Web Developer in Bamenda, Cameroon",
-        description: "Yves Dev 237 builds responsive business websites, landing pages, and booking websites for small businesses in Bamenda, Cameroon and worldwide.",
+        description:
+          "Yves Dev 237 builds responsive business websites, landing pages, and booking websites for small businesses in Bamenda, Cameroon and worldwide.",
         locale: "en_CM",
       },
       nav: {
@@ -174,7 +175,8 @@ const resources = {
         description:
           "Tell me what your business does and what you want the website to achieve. I’ll reply with clear next steps and a quote.",
         whatsapp: "Message me on WhatsApp",
-        whatsappMessage: "Hello Yves, I would like to discuss a website project.",
+        whatsappMessage:
+          "Hello Yves, I would like to discuss a website project.",
         form: {
           name: "Name",
           namePlaceholder: "Your name",
@@ -212,7 +214,8 @@ const resources = {
     translation: {
       metadata: {
         title: "Yves Dev 237 | Développeur web freelance à Bamenda, Cameroun",
-        description: "Yves Dev 237 crée des sites web professionnels responsives, des pages d’atterrissage et des sites de réservation pour les petites entreprises à Bamenda, au Cameroun et partout dans le monde.",
+        description:
+          "Yves Dev 237 crée des sites web professionnels responsives, des pages d’atterrissage et des sites de réservation pour les petites entreprises à Bamenda, au Cameroun et partout dans le monde.",
         locale: "fr_CM",
       },
       nav: {
@@ -221,7 +224,7 @@ const resources = {
         process: "Méthode",
         about: "À propos",
         contact: "Contact",
-        startProject: "Démarrer un projet",
+        startProject: "Demandez un devis",
         openMenu: "Ouvrir le menu de navigation",
         closeMenu: "Fermer le menu de navigation",
         language: "Langue",
@@ -231,7 +234,7 @@ const resources = {
       hero: {
         location: "Développeur web freelance · Bamenda, Cameroun",
         title:
-          "Des sites web qui aident les petites entreprises à recevoir plus de demandes.",
+          "Des sites web qui aident les petites entreprises à recevoir plus de prospects.",
         description:
           "Je crée des sites web rapides et adaptés aux mobiles pour les entreprises de services, au Cameroun et partout dans le monde. Ils présentent clairement vos services et transforment les visiteurs en demandes sur WhatsApp.",
         discuss: "Parlons de votre projet",
@@ -310,13 +313,13 @@ const resources = {
         title: "Comment je peux vous aider",
         items: [
           {
-            name: "Site web pour entreprise",
+            name: "Site web pour entreprises",
             description:
               "Un site responsive de 1 à 3 pages avec vos services, coordonnées, liens sociaux et un bouton de contact WhatsApp.",
             price: "À partir de 100 000 FCFA",
           },
           {
-            name: "Page d’atterrissage",
+            name: "Site Vitrine ",
             description:
               "Une page ciblée pour un service, une offre, un événement, un produit ou une campagne.",
             price: "À partir de 70 000 FCFA",
@@ -332,10 +335,10 @@ const resources = {
         quote: "Demander un devis",
       },
       process: {
-        eyebrow: "Méthode",
+        eyebrow: "Procédé",
         title: "Un processus clair, de l’idée au lancement",
         delivery:
-          "Délai habituel : 7 à 10 jours ouvrés après réception du contenu et de l’acompte.",
+          "Délai habituel : 7 à 10 jours ouvrables après réception du contenu et de l’acompte.",
         steps: [
           {
             title: "Parlez-moi de votre activité",
@@ -380,9 +383,10 @@ const resources = {
         eyebrow: "Contact",
         title: "Prêt à créer un site qui représente bien votre entreprise ?",
         description:
-          "Présentez-moi votre activité et ce que vous attendez du site. Je vous répondrai avec les prochaines étapes et un devis clair.",
+          "Présentez-moi votre activité et vos attentes. Je vous répondrai avec les prochaines étapes et un devis clair.",
         whatsapp: "M’écrire sur WhatsApp",
-        whatsappMessage: "Bonjour Yves, j’aimerais discuter d’un projet de site web.",
+        whatsappMessage:
+          "Bonjour Yves, j’aimerais discuter d’un projet de site web.",
         form: {
           name: "Nom",
           namePlaceholder: "Votre nom",
@@ -446,16 +450,22 @@ const updateLocalizedMetadata = (language = i18n.resolvedLanguage ?? "en") => {
     ?.setAttribute("content", i18n.t("metadata.description"));
 };
 
-void i18n.use(initReactI18next).init({
-  resources,
-  lng: savedLanguage === "fr" ? "fr" : "en",
-  fallbackLng: "en",
-  interpolation: { escapeValue: false },
-}).then(() => updateLocalizedMetadata());
+void i18n
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: savedLanguage === "fr" ? "fr" : "en",
+    fallbackLng: "en",
+    interpolation: { escapeValue: false },
+  })
+  .then(() => updateLocalizedMetadata());
 
 i18n.on("languageChanged", (language) => {
   updateLocalizedMetadata(language);
-  window.localStorage.setItem("language", language.startsWith("fr") ? "fr" : "en");
+  window.localStorage.setItem(
+    "language",
+    language.startsWith("fr") ? "fr" : "en",
+  );
 });
 
 document.documentElement.lang = savedLanguage === "fr" ? "fr" : "en";

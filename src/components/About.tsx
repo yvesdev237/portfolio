@@ -10,9 +10,7 @@ export const About = () => {
     <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
       <Reveal>
         <div className="space-y-5 text-stone-300">
-          <p>
-            {t("about.first")}
-          </p>
+          <p>{t("about.first")}</p>
           <p>{t("about.second")}</p>
           <div className="flex flex-wrap gap-2 pt-1">
             {skillTags.map((_, index) => (
@@ -68,7 +66,9 @@ export const About = () => {
                 <div className="text-lg font-semibold text-stone-100">
                   {t("about.remote")}
                 </div>
-                <div className="mt-1 text-slate-300">{t("about.worldwide")}</div>
+                <div className="mt-1 text-slate-300">
+                  {t("about.worldwide")}
+                </div>
               </div>
               <div className="rounded-xl border border-white/10 bg-slate-800/70 p-3">
                 <div className="text-lg font-semibold text-stone-100">
