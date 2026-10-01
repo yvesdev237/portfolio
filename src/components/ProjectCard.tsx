@@ -1,6 +1,7 @@
 import { FaArrowUpRightFromSquare, FaXmark } from "react-icons/fa6";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { Project } from "../data/portfolio";
 
 const isExternalHttpUrl = (value: string | undefined): value is string => {
@@ -16,6 +17,8 @@ const isExternalHttpUrl = (value: string | undefined): value is string => {
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
+  const projectKey = project.isConcept ? "hotel" : "rental";
   const liveUrl = project.liveUrl?.trim() || project.caseStudy?.liveLink.trim();
   const hasLiveLink = isExternalHttpUrl(liveUrl);
   const hasCaseStudyLink = Boolean(
@@ -35,7 +38,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         <div className="absolute inset-0 overflow-hidden bg-slate-900">
           <img
             src={project.image}
-            alt={project.imageAlt || `${project.title} preview`}
+            alt={t(`projects.${projectKey}.alt`)}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             loading="lazy"
             onError={(event) => {
@@ -64,12 +67,12 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4">
           <div className="flex items-center gap-2">
             <span className="max-w-full truncate rounded-full border border-white/20 bg-slate-950/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-stone-100 backdrop-blur-sm">
-              {project.category}
+              {t(`projects.${projectKey}.category`)}
             </span>
           </div>
 
           <h3 className="line-clamp-2 text-lg font-semibold leading-tight text-white sm:text-xl">
-            {project.title}
+            {t(`projects.${projectKey}.title`)}
           </h3>
 
           <div className="flex flex-wrap items-center gap-2 pt-1">
@@ -78,9 +81,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 href={liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-10 items-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-200"
+                className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-200 sm:flex-none"
               >
-                See live{" "}
+                {t("projects.seeLive")} {" "}
                 <FaArrowUpRightFromSquare size={13} aria-hidden="true" />
               </a>
             ) : null}
@@ -89,9 +92,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 href={project.caseStudyUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/30 bg-slate-950/40 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-slate-950/70"
+                className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full border border-white/30 bg-slate-950/40 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-slate-950/70 sm:flex-none"
               >
-                Case study{" "}
+                {t("projects.caseStudy")} {" "}
                 <FaArrowUpRightFromSquare size={13} aria-hidden="true" />
               </a>
             ) : null}
@@ -99,9 +102,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/30 bg-slate-950/40 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-slate-950/70"
+                className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full border border-white/30 bg-slate-950/40 px-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-slate-950/70 sm:flex-none"
               >
-                Details{" "}
+                {t("projects.details")} {" "}
                 <FaArrowUpRightFromSquare size={13} aria-hidden="true" />
               </button>
             ) : null}
@@ -129,15 +132,15 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <div className="mb-6 flex items-start justify-between gap-3">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-[0.2em] text-emerald-400">
-                    Project case study
+                    {t("projects.modalTitle")}
                   </p>
                   <h3 className="mt-2 text-2xl font-semibold text-stone-100">
-                    {caseStudy.project}
+                    {t(`projects.${projectKey}.title`)}
                   </h3>
                 </div>
                 <button
                   type="button"
-                  aria-label="Close case study"
+                  aria-label={t("projects.close")}
                   onClick={() => setIsOpen(false)}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-stone-200"
                 >
@@ -147,29 +150,29 @@ export const ProjectCard = ({ project }: { project: Project }) => {
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-4">
-                  <InfoRow label="Project" value={caseStudy.project} />
-                  <InfoRow label="Type" value={caseStudy.type} />
-                  <InfoRow label="Goal" value={caseStudy.goal} />
-                  <InfoRow label="Challenge" value={caseStudy.challenge} />
+                  <InfoRow label={t("projects.project")} value={t(`projects.${projectKey}.title`)} />
+                  <InfoRow label={t("projects.type")} value={t(`projects.${projectKey}.type`)} />
+                  <InfoRow label={t("projects.goal")} value={t(`projects.${projectKey}.goal`)} />
+                  <InfoRow label={t("projects.challenge")} value={t(`projects.${projectKey}.challenge`)} />
                 </div>
 
                 <div className="space-y-4">
-                  <InfoRow label="Solution" value={caseStudy.solution} />
-                  <InfoRow label="My role" value={caseStudy.myRole} />
-                  <InfoRow label="Stack" value={caseStudy.stack} />
-                  <InfoRow label="Live link" value={caseStudy.liveLink} />
+                  <InfoRow label={t("projects.solution")} value={t(`projects.${projectKey}.solution`)} />
+                  <InfoRow label={t("projects.role")} value={t(`projects.${projectKey}.role`)} />
+                  <InfoRow label={t("projects.stack")} value={caseStudy.stack} />
+                  <InfoRow label={t("projects.liveLink")} value={caseStudy.liveLink} />
                 </div>
               </div>
 
               <div className="mt-6">
                 <p className="mb-3 text-sm font-medium uppercase tracking-[0.16em] text-stone-300">
-                  Key features
+                  {t("projects.keyFeatures")}
                 </p>
                 <ul className="space-y-2 text-sm text-stone-300">
-                  {caseStudy.keyFeatures.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
+                  {caseStudy.keyFeatures.map((_, index) => (
+                    <li key={index} className="flex items-start gap-2">
                       <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                      <span>{feature}</span>
+                      <span>{t(`projects.${projectKey}.features.${index}`)}</span>
                     </li>
                   ))}
                 </ul>

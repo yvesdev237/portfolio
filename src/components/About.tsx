@@ -1,27 +1,26 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { skillTags } from "../data/portfolio";
 import { Reveal } from "./Reveal";
 
 export const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
       <Reveal>
         <div className="space-y-5 text-stone-300">
           <p>
-            I’m Yves, a web developer based in Bamenda, Cameroon. I enjoy
-            turning business ideas into clear, useful digital experiences. My
-            focus is on building fast, responsive websites that help service
-            businesses explain what they do, build trust, and make it simple for
-            customers to reach them.
+            {t("about.first")}
           </p>
-          <p>I work remotely with clients in Cameroon and internationally.</p>
+          <p>{t("about.second")}</p>
           <div className="flex flex-wrap gap-2 pt-1">
-            {skillTags.map((skill) => (
+            {skillTags.map((_, index) => (
               <span
-                key={skill}
+                key={index}
                 className="rounded-full border border-white/10 bg-slate-900/80 px-3 py-2 text-xs font-medium text-stone-200"
               >
-                {skill}
+                {t(`about.skills.${index}`)}
               </span>
             ))}
           </div>
@@ -67,15 +66,15 @@ export const About = () => {
             <div className="mt-6 grid grid-cols-2 gap-3 text-center text-xs">
               <div className="rounded-xl border border-white/10 bg-slate-800/70 p-3">
                 <div className="text-lg font-semibold text-stone-100">
-                  Remote
+                  {t("about.remote")}
                 </div>
-                <div className="mt-1 text-slate-300">Worldwide</div>
+                <div className="mt-1 text-slate-300">{t("about.worldwide")}</div>
               </div>
               <div className="rounded-xl border border-white/10 bg-slate-800/70 p-3">
                 <div className="text-lg font-semibold text-stone-100">
-                  Cameroon
+                  {t("about.cameroon")}
                 </div>
-                <div className="mt-1 text-slate-300">Bamenda</div>
+                <div className="mt-1 text-slate-300">{t("about.bamenda")}</div>
               </div>
             </div>
           </div>

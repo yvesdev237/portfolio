@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import type { ProcessStep } from "../data/portfolio";
 
 export const ProcessTimeline = ({ steps }: { steps: ProcessStep[] }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="relative">
       <motion.div
@@ -36,10 +39,10 @@ export const ProcessTimeline = ({ steps }: { steps: ProcessStep[] }) => {
 
             <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/55 p-6 shadow-[0_18px_40px_rgba(15,23,42,0.12)] md:pt-12">
               <h3 className="text-xl font-semibold text-stone-100">
-                {step.title}
+                {t(`process.steps.${index}.title`)}
               </h3>
               <p className="mt-3 text-sm leading-7 text-stone-300">
-                {step.description}
+                {t(`process.steps.${index}.description`)}
               </p>
             </div>
           </motion.div>

@@ -5,14 +5,9 @@ import {
   FaLocationDot,
 } from "react-icons/fa6";
 import { motion } from "motion/react";
-import { projects, socialLinks } from "../data/portfolio";
+import { useTranslation } from "react-i18next";
+import { projects } from "../data/portfolio";
 import { Reveal } from "./Reveal";
-
-const credibilityBadges = [
-  "Mobile-first",
-  "Built for enquiries",
-  "Remote worldwide",
-];
 
 const featuredProject = projects.find((project) => project.isConcept);
 const mobileProject = projects.find((project) => !project.isConcept);
@@ -21,6 +16,10 @@ const featuredProjectUrl =
   featuredProject?.caseStudy?.liveLink.trim();
 
 export const Hero = () => {
+  const { t } = useTranslation();
+  const featuredProjectKey = featuredProject?.isConcept ? "hotel" : "rental";
+  const whatsappUrl = `https://wa.me/237699959447?text=${encodeURIComponent(t("contact.whatsappMessage"))}`;
+
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
@@ -28,48 +27,46 @@ export const Hero = () => {
           <div>
             <Reveal className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-emerald-200">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
-              Freelance web developer · Bamenda, Cameroon
+              {t("hero.location")}
             </Reveal>
 
             <Reveal delay={0.08}>
               <h1 className="mt-6 max-w-xl text-4xl font-semibold tracking-[-0.05em] text-stone-50 sm:text-5xl lg:text-6xl">
-                Websites that help small businesses get more enquiries.
+                {t("hero.title")}
               </h1>
             </Reveal>
 
             <Reveal delay={0.12}>
               <p className="mt-6 max-w-xl text-lg leading-8 text-stone-300">
-                I build fast, mobile-friendly websites for service businesses in
-                Cameroon and worldwide—designed to present your services clearly
-                and turn visitors into WhatsApp enquiries.
+                {t("hero.description")}
               </p>
             </Reveal>
 
             <Reveal delay={0.16}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href={socialLinks.whatsapp}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-sm font-medium text-slate-950 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
                 >
-                  Discuss your project{" "}
+                  {t("hero.discuss")} {" "}
                   <FaArrowRight size={16} aria-hidden="true" />
                 </a>
                 <a
                   href="#work"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-medium text-stone-100 transition-colors hover:border-white/20 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
                 >
-                  View selected work
+                  {t("hero.viewWork")}
                 </a>
               </div>
             </Reveal>
 
             <Reveal delay={0.2}>
               <div className="mt-8 flex flex-wrap gap-2">
-                {credibilityBadges.map((badge) => (
+                {["badgeMobile", "badgeEnquiries", "badgeRemote"].map((key) => (
                   <span
-                    key={badge}
+                    key={key}
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/55 px-3 py-2 text-xs font-medium text-stone-200"
                   >
                     <FaCheck
@@ -77,7 +74,7 @@ export const Hero = () => {
                       className="text-emerald-300"
                       aria-hidden="true"
                     />
-                    {badge}
+                    {t(`hero.${key}`)}
                   </span>
                 ))}
               </div>
@@ -90,7 +87,7 @@ export const Hero = () => {
                   className="text-emerald-300"
                   aria-hidden="true"
                 />
-                Currently available for select projects
+                {t("hero.availability")}
               </div>
             </Reveal>
           </div>
@@ -114,7 +111,7 @@ export const Hero = () => {
                     <span className="h-2 w-2 rounded-full bg-yellow-500" />
                   </div>
                   <span className="min-w-0 flex-1 truncate rounded-md border border-slate-200 bg-white px-3 py-1 text-center text-[9px] text-slate-500 sm:text-[10px]">
-                    {featuredProject?.title ?? "Featured project"}
+                    {featuredProject ? t(`projects.${featuredProjectKey}.title`) : t("hero.featuredProject")}
                   </span>
                 </div>
                 <a
@@ -133,16 +130,20 @@ export const Hero = () => {
                       ? "noreferrer"
                       : undefined
                   }
-                  aria-label={`Open ${featuredProject?.title ?? "featured project"}`}
+                  aria-label={t("hero.openProject", {
+                    project: featuredProject
+                      ? t(`projects.${featuredProjectKey}.title`)
+                      : t("hero.featuredProject"),
+                  })}
                   className="group relative block h-[calc(100%-2.5rem)] overflow-hidden bg-slate-900 sm:h-[calc(100%-2.75rem)]"
                 >
                   <img
                     src={featuredProject?.image ?? "/images/montcameroon.png"}
-                    alt={featuredProject?.imageAlt ?? "Hotel website preview"}
+                    alt={featuredProject ? t(`projects.${featuredProjectKey}.alt`) : t("hero.hotelAlt")}
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.025]"
                   />
                   <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[10px] font-semibold text-slate-950 shadow-lg transition-colors group-hover:bg-emerald-200 sm:bottom-4 sm:right-4 sm:px-4 sm:py-2.5 sm:text-xs">
-                    Visit live site
+                    {t("hero.visitSite")}
                     <FaArrowUpRightFromSquare size={12} aria-hidden="true" />
                   </span>
                 </a>

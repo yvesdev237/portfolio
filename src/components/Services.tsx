@@ -1,13 +1,16 @@
 import { FaArrowRight } from "react-icons/fa6";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import type { Service } from "../data/portfolio";
 import { Reveal } from "./Reveal";
 
 export const Services = ({ services }: { services: Service[] }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="grid gap-5 md:grid-cols-3">
       {services.map((service, index) => (
-        <Reveal key={service.name} delay={index * 0.08}>
+        <Reveal key={service.initial} delay={index * 0.08}>
           <motion.article
             whileHover={{ y: -6 }}
             transition={{ duration: 0.2 }}
@@ -17,14 +20,14 @@ export const Services = ({ services }: { services: Service[] }) => {
               {service.initial}
             </div>
             <h3 className="text-2xl font-semibold text-stone-100">
-              {service.name}
+              {t(`services.items.${index}.name`)}
             </h3>
             <p className="mt-3 text-sm leading-7 text-stone-300">
-              {service.description}
+              {t(`services.items.${index}.description`)}
             </p>
             <div className="mt-6 border-t border-white/10 pt-4">
               <p className="text-lg font-semibold text-emerald-300">
-                {service.price}
+                {t(`services.items.${index}.price`)}
               </p>
             </div>
           </motion.article>
@@ -33,14 +36,13 @@ export const Services = ({ services }: { services: Service[] }) => {
 
       <div className="md:col-span-3 mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-stone-300">
-          Hosting, domains, paid tools, and major new features are quoted
-          separately when needed.
+          {t("services.note")}
         </p>
         <a
           href="#contact"
           className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-5 py-3 text-sm font-medium text-emerald-200 transition-transform hover:-translate-y-0.5 hover:bg-emerald-500/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
         >
-          Get a project quote <FaArrowRight size={16} aria-hidden="true" />
+          {t("services.quote")} <FaArrowRight size={16} aria-hidden="true" />
         </a>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import { FaEnvelope, FaFacebookF, FaGithub, FaWhatsapp } from "react-icons/fa6";
 import { useState, type SubmitEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { socialLinks } from "../data/portfolio";
 import { Reveal } from "./Reveal";
 
 export const Contact = () => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<{
     type: "success" | "error";
     message: string;
@@ -18,8 +20,7 @@ export const Contact = () => {
     if (!accessKey) {
       setStatus({
         type: "error",
-        message:
-          "An error occurred while submitting the form. Please reach me by WhatsApp or email.",
+        message: t("contact.missingKey"),
       });
       return;
     }
@@ -30,7 +31,7 @@ export const Contact = () => {
     try {
       const payload = Object.fromEntries(new FormData(form));
       payload.access_key = accessKey;
-      payload.subject = `New portfolio enquiry from ${payload.name}`;
+      payload.subject = t("contact.emailSubject", { name: payload.name });
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -49,13 +50,12 @@ export const Contact = () => {
       form.reset();
       setStatus({
         type: "success",
-        message: "Thanks, your enquiry has been sent. I’ll be in touch soon.",
+        message: t("contact.success"),
       });
     } catch {
       setStatus({
         type: "error",
-        message:
-          "Your enquiry could not be sent. Please try again or contact me directly.",
+        message: t("contact.failure"),
       });
     } finally {
       setIsSubmitting(false);
@@ -68,27 +68,26 @@ export const Contact = () => {
         <div className="space-y-6">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-400">
-              Contact
+              {t("contact.eyebrow")}
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-stone-100 sm:text-4xl">
-              Ready to build a website that represents your business well?
+              {t("contact.title")}
             </h2>
           </div>
 
           <p className="max-w-md text-base leading-7 text-stone-300">
-            Tell me what your business does and what you want the website to
-            achieve. I’ll reply with clear next steps and a quote.
+            {t("contact.description")}
           </p>
 
           <div className="space-y-4">
             <a
-              href={socialLinks.whatsapp}
+              href={`https://wa.me/237699959447?text=${encodeURIComponent(t("contact.whatsappMessage"))}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-emerald-500 px-6 py-4 text-base font-medium text-slate-950 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
             >
               <FaWhatsapp size={18} aria-hidden="true" />
-              Message me on WhatsApp
+              {t("contact.whatsapp")}
             </a>
 
             <a
@@ -109,7 +108,7 @@ export const Contact = () => {
               href={socialLinks.github}
               target="_blank"
               rel="noreferrer"
-              aria-label="GitHub"
+              aria-label={t("social.github")}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-stone-200 transition-colors hover:border-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
             >
               <FaGithub size={18} aria-hidden="true" />
@@ -118,7 +117,7 @@ export const Contact = () => {
               href={socialLinks.facebook}
               target="_blank"
               rel="noreferrer"
-              aria-label="Facebook"
+              aria-label={t("social.facebook")}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-stone-200 transition-colors hover:border-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
             >
               <FaFacebookF size={18} aria-hidden="true" />
@@ -134,28 +133,28 @@ export const Contact = () => {
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="flex flex-col gap-2 text-sm text-stone-200">
-              Name
+              {t("contact.form.name")}
               <input
                 type="text"
                 name="name"
                 required
                 className="rounded-xl border border-white/10 bg-slate-900 px-3 py-3 text-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
-                placeholder="Your name"
+                placeholder={t("contact.form.namePlaceholder")}
               />
             </label>
 
             <label className="flex flex-col gap-2 text-sm text-stone-200">
-              Business name
+              {t("contact.form.business")}
               <input
                 type="text"
                 name="business"
                 className="rounded-xl border border-white/10 bg-slate-900 px-3 py-3 text-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
-                placeholder="Business name"
+                placeholder={t("contact.form.business")}
               />
             </label>
 
             <label className="flex flex-col gap-2 text-sm text-stone-200">
-              Email address
+              {t("contact.form.email")}
               <input
                 type="email"
                 name="email"
@@ -167,7 +166,7 @@ export const Contact = () => {
             </label>
 
             <label className="flex flex-col gap-2 text-sm text-stone-200">
-              WhatsApp number (optional)
+              {t("contact.form.phone")}
               <input
                 type="tel"
                 name="contact"
@@ -178,23 +177,23 @@ export const Contact = () => {
             </label>
 
             <label className="flex flex-col gap-2 text-sm text-stone-200 sm:col-span-2">
-              What do you need?
+              {t("contact.form.message")}
               <textarea
                 name="message"
                 rows={5}
                 required
                 className="rounded-xl border border-white/10 bg-slate-900 px-3 py-3 text-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
-                placeholder="Tell me about your business and the website goals."
+                placeholder={t("contact.form.messagePlaceholder")}
               />
             </label>
 
             <label className="flex flex-col gap-2 text-sm text-stone-200 sm:col-span-2">
-              Estimated budget
+              {t("contact.form.budget")}
               <input
                 type="text"
                 name="budget"
                 className="rounded-xl border border-white/10 bg-slate-900 px-3 py-3 text-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
-                placeholder="e.g. 100,000-200,000 FCFA"
+                placeholder={t("contact.form.budgetPlaceholder")}
               />
             </label>
           </div>
@@ -204,7 +203,7 @@ export const Contact = () => {
             disabled={isSubmitting}
             className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-6 py-3.5 text-sm font-medium text-slate-950 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:cursor-wait disabled:opacity-60"
           >
-            {isSubmitting ? "Sending..." : "Send enquiry"}
+            {isSubmitting ? t("contact.form.sending") : t("contact.form.submit")}
           </button>
 
           {status ? (
@@ -221,7 +220,7 @@ export const Contact = () => {
           ) : null}
 
           <p className="mt-4 text-xs text-stone-400">
-            Your details will only be used to reply to your enquiry.
+            {t("contact.form.privacy")}
           </p>
         </form>
       </Reveal>
