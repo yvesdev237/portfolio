@@ -87,14 +87,25 @@ export const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="overflow-hidden border-t border-white/10 bg-slate-950/95 md:hidden"
+            className="absolute inset-x-0 top-full overflow-hidden border-t border-white/10 bg-slate-950/95 md:hidden"
           >
             <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
               {navLinks.map((link) => (
                 <a
                   key={link.key}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setMenuOpen(false);
+
+                    const target = document.querySelector(link.href);
+                    if (!target) return;
+
+                    if (window.location.hash !== link.href) {
+                      window.history.pushState(null, "", link.href);
+                    }
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                   className="rounded-xl px-3 py-3 text-base text-stone-200 transition-colors hover:bg-white/5"
                 >
                   {t(`nav.${link.key}`)}

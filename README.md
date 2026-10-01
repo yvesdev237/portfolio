@@ -12,6 +12,11 @@ Currently, two official plugins are available:
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
 ## Expanding the ESLint configuration
+## Contact form
+
+The contact form uses Web3Forms. Copy `.env.example` to `.env.local` for local development and set `VITE_WEB3FORMS_ACCESS_KEY` to your Web3Forms access key. Add the same variable in the Vercel project settings for the Production environment, then redeploy. Vite embeds `VITE_` variables at build time, so changing the Vercel value requires a new deployment.
+
+## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
