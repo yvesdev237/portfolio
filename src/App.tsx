@@ -7,6 +7,7 @@ import { ProcessTimeline } from "./components/ProcessTimeline";
 import { ProjectCard } from "./components/ProjectCard";
 import { SectionHeading } from "./components/SectionHeading";
 import { Services } from "./components/Services";
+import { Analytics } from "@vercel/analytics/react";
 import {
   processSteps,
   projects,
@@ -146,6 +147,7 @@ const App = () => {
       </main>
 
       <Footer />
+      <Analytics />
     </div>
   );
 };
