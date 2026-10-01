@@ -13,6 +13,7 @@ const navLinks = [
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
   const { t, i18n } = useTranslation();
   const nextLanguage = i18n.resolvedLanguage === "fr" ? "en" : "fr";
   const languageLabel =
@@ -80,7 +81,19 @@ export const Navbar = () => {
         </button>
       </nav>
 
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => {
+          if (!pendingHref) return;
+
+          if (window.location.hash !== pendingHref) {
+            window.history.pushState(null, "", pendingHref);
+          }
+          document
+            .querySelector(pendingHref)
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+          setPendingHref(null);
+        }}
+      >
         {menuOpen ? (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -96,15 +109,8 @@ export const Navbar = () => {
                   href={link.href}
                   onClick={(event) => {
                     event.preventDefault();
+                    setPendingHref(link.href);
                     setMenuOpen(false);
-
-                    const target = document.querySelector(link.href);
-                    if (!target) return;
-
-                    if (window.location.hash !== link.href) {
-                      window.history.pushState(null, "", link.href);
-                    }
-                    target.scrollIntoView({ behavior: "smooth", block: "start" });
                   }}
                   className="rounded-xl px-3 py-3 text-base text-stone-200 transition-colors hover:bg-white/5"
                 >

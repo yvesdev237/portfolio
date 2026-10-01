@@ -14,7 +14,7 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 ## Contact form
 
-The contact form uses Web3Forms. Copy `.env.example` to `.env.local` for local development and set `VITE_WEB3FORMS_ACCESS_KEY` to your Web3Forms access key. Add the same variable in the Vercel project settings for the Production environment, then redeploy. Vite embeds `VITE_` variables at build time, so changing the Vercel value requires a new deployment.
+The contact form uses Web3Forms. Copy `.env.example` to `.env.local` for local development and set `WEB3FORMS_ACCESS_KEY` to your Web3Forms access key. Add the same variable in the Vercel project settings for the Production environment, then redeploy. Vite embeds this variable at build time, so changing the Vercel value requires a new deployment.
 
 ## Expanding the ESLint configuration
 

@@ -15,7 +15,9 @@ export const Contact = () => {
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const accessKey =
+      import.meta.env.WEB3FORMS_ACCESS_KEY ||
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
     if (!accessKey) {
       setStatus({
